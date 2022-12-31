@@ -7,7 +7,7 @@ To run the On-Premise MySQL Agent Docker Compose File locally, you must have Git
 1. Firstly Clone the Docker Compose file from Github using -
 
 ```ruby
-git clone https://github.com/devatengit/on-premises-mysql-agent.git
+git clone https://github.com/devatengit/onpremises-common-agent.git
 ``` 
 ## Note:
 
