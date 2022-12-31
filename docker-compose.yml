@@ -1,0 +1,69 @@
+version: '3.8'
+networks:
+  devaten-dashboard-common-agent:
+    name: devaten-dashboard-common-agent
+    
+services:
+
+  devaten-activemq:
+    image: rmohr/activemq:5.15.9
+    container_name: devaten-activemq
+    restart: unless-stopped
+    ports:
+      - "8161:8161"
+      - "61616:61616"
+    networks:
+      - devaten-dashboard-common-agent
+
+  mysqldb:
+    image: mysql:8
+    container_name: mysqldb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_PASSWORD: root
+      MYSQL_DATABASE: devaten
+    ports:
+      - 0.0.0.0:3306:3306
+    volumes:
+      # Files
+      - ./mysql/my.cnf:/etc/alternatives/my.cnf
+      # Dirs
+      - ./mysql/datadir/:/var/lib/mysql:rw
+      - "./mysql/dump.sql:/docker-entrypoint-initdb.d/mysql/dump.sql"
+    command:
+      - --sql_mode=
+    healthcheck:
+      test: ["CMD-SHELL", 'mysqladmin ping']
+      interval: 30s
+      timeout: 2s
+      retries: 15
+    networks:
+      - devaten-dashboard-common-agent
+    
+  onpremise-commonagent-container:
+    image: devaten/onpremises-devaten-common-agent-app
+    container_name: onpremise-commonagent-container
+    restart: unless-stopped
+    ports:
+      - "8111:8111"
+    volumes:
+      - ./mysql/h2:/opt/h2-data:rw
+    networks:
+      - devaten-dashboard-common-agent
+
+  devaten-dashboard-container:
+    image: devaten/onpremises-devaten-dashbord-for-common-agent:1.0.0
+    container_name: devaten-dashboard-container
+    restart: always 
+    depends_on: 
+      mysqldb: 
+        condition: service_healthy
+    ports:
+      - 8081:8081
+    networks:
+      - devaten-dashboard-common-agent
+
+
+volumes:
+  h2-data: {}
