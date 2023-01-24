@@ -1,4 +1,4 @@
-# Devaten On-Premises MySQL Agent
+# Devaten On-Premises
 
 ## How to Install 
 
