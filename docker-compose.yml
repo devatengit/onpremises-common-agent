@@ -39,19 +39,8 @@ services:
       timeout: 2s
       retries: 15
     networks:
-      - devaten-dashboard-common-agent
-    
-  onpremise-commonagent-container:
-    image: devaten/onpremises-devaten-common-agent-app
-    container_name: onpremise-commonagent-container
-    restart: unless-stopped
-    ports:
-      - "8111:8111"
-    volumes:
-      - ./mysql/h2:/opt/h2-data:rw
-    networks:
-      - devaten-dashboard-common-agent
-
+      - devaten-dashboard-common-agent   
+  
   devaten-dashboard-container:
     image: devaten/onpremises-devaten-dashbord-for-common-agent:1.0.0
     container_name: devaten-dashboard-container
@@ -61,9 +50,28 @@ services:
         condition: service_healthy
     ports:
       - 8081:8081
+    healthcheck:
+      test: curl --fail http://localhost:8081 || exit 1
+      interval: 60s
+      retries: 5
+      start_period: 20s
+      timeout: 10s  
     networks:
       - devaten-dashboard-common-agent
-
+   
+  onpremise-commonagent-container:
+    image: devaten/onpremises-devaten-common-agent-app
+    container_name: onpremise-commonagent-container
+    restart: always
+    depends_on: 
+      devaten-dashboard-container: 
+        condition: service_healthy
+    ports:
+      - "8111:8111"
+    volumes:
+      - ./mysql/h2:/opt/h2-data:rw
+    networks:
+      - devaten-dashboard-common-agent   
 
 volumes:
   h2-data: {}
