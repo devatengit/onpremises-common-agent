@@ -42,7 +42,7 @@ services:
       - devaten-dashboard-common-agent   
   
   devaten-dashboard-container:
-    image: devaten/onpremises-devaten-dashbord-for-common-agent:1.0.0
+    image: devaten/devaten-dashbord
     container_name: devaten-dashboard-container
     restart: always 
     depends_on: 
@@ -60,7 +60,7 @@ services:
       - devaten-dashboard-common-agent
    
   onpremise-commonagent-container:
-    image: devaten/onpremises-devaten-common-agent-app
+    image: devaten/devaten-agent
     container_name: onpremise-commonagent-container
     restart: always
     depends_on: 
