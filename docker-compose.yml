@@ -42,7 +42,7 @@ services:
       - devaten-dashboard-common-agent   
   
   devaten-dashboard-container:
-    image: devaten/devaten-dashbord
+    image: devaten/devaten-dashboard
     container_name: devaten-dashboard-container
     restart: always 
     depends_on: 
