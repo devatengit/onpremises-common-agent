@@ -45,6 +45,16 @@ services:
     image: devaten/devaten-dashboard
     container_name: devaten-dashboard-container
     restart: always 
+    environment:
+      spring.datasource.username: root
+      spring.datasource.password: root
+      spring.flyway.user: root
+      spring.flyway.password: root
+      openai.apiKey: Enter-your-openai-key
+      smtp.host: blade13.euronic.fi
+      smtp.email: admin@devaten.com
+      smtp.password: 47eyRnNFv69caaG
+      smtp.port: 465
     depends_on: 
       mysqldb: 
         condition: service_healthy
@@ -69,7 +79,8 @@ services:
     ports:
       - "8111:8111"
     volumes:
-      - ./mysql/h2:/opt/h2-data:rw
+      - ./Configurations/h2/:/Configurations/h2/:rw
+      - ./Configurations/.devaten/.data:/Configurations/.devaten/.data:rw
     networks:
       - devaten-dashboard-common-agent   
 
