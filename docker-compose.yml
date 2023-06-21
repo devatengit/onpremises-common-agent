@@ -18,7 +18,6 @@ services:
       - devaten-dashboard-common-agent
     volumes:
       - ./Configurations/activemq/ACTIVEMQ_CONF/conf:/opt/activemq/conf:rw
-      - ./Configurations/activemq/ACTIVEMQ_DATA/data:/opt/activemq/data:rw
   mysqldb:
     image: mysql:8
     container_name: mysqldb
