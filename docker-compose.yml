@@ -9,30 +9,34 @@ services:
     image: rmohr/activemq:5.15.9
     container_name: devaten-activemq
     restart: unless-stopped
+    # activemq username is devaten .you can find activemq password in onpremises-common-agent\Configurations\activemq\ACTIVEMQ_CONF\conf\jetty-realm.propeties file.
+    # if you want to change password you can go above file location change it before run docker-compose.
     ports:
       - "8161:8161"
       - "61616:61616"
     networks:
       - devaten-dashboard-common-agent
-
+    volumes:
+      - ./Configurations/activemq/ACTIVEMQ_CONF/conf:/opt/activemq/conf:rw
+      - ./Configurations/activemq/ACTIVEMQ_DATA/data:/opt/activemq/data:rw
   mysqldb:
     image: mysql:8
     container_name: mysqldb
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: devaten@123
       MYSQL_DATABASE: devaten
     ports:
       - 0.0.0.0:3306:3306
     volumes:
-      # Files
+      # Files 
       - ./mysql/my.cnf:/etc/alternatives/my.cnf
       # Dirs
       - ./mysql/datadir/:/var/lib/mysql:rw
-      - "./mysql/dump.sql:/docker-entrypoint-initdb.d/mysql/dump.sql"
+      - "./mysql/dump.sql:/docker-entrypoint-initdb.d/dump.sql"
     command:
       - --sql_mode=
+      - --default-authentication-plugin=mysql_native_password
     healthcheck:
       test: ["CMD-SHELL", 'mysqladmin ping']
       interval: 30s
@@ -47,9 +51,9 @@ services:
     restart: always 
     environment:
       spring.datasource.username: root
-      spring.datasource.password: root
+      spring.datasource.password: devaten@123
       spring.flyway.user: root
-      spring.flyway.password: root
+      spring.flyway.password: devaten@123
       openai.apiKey: Enter-your-openai-key
       smtp.host: blade13.euronic.fi
       smtp.email: admin@devaten.com
