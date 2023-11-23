@@ -54,6 +54,13 @@ services:
       spring.flyway.user: root
       spring.flyway.password: devaten@123
       openai.apiKey: Enter-your-openai-key
+      # for opensource url must be like this 'https://api.openai.com/v1/chat/completions' if your open-ai on azure then
+      #your url like 'https://xxxxxxx.openai.azure.com/openai/deployments/Test/completions?api-version=2023-09-15-preview'
+      openai.apiurl: Enter-open-ai-api-url
+      # give response model name as 'gpt-3.5-turbo' or 'gpt-4'.
+      openai.responsemodel: Enter-open-ai-responsemodel
+      # if your open-ai is on azure server then put server name as 'azure' or if you use opensource then server name as 'openai'.
+      openai.server: Enter-open-ai-server
       smtp.host: blade13.euronic.fi
       smtp.email: admin@devaten.com
       smtp.password: 47eyRnNFv69caaG
