@@ -83,6 +83,11 @@ services:
     image: devaten/devaten-agent
     container_name: onpremise-commonagent-container
     restart: always
+    environment:
+      spring.datasource.username: root
+      spring.datasource.password: devaten@123
+      spring.flyway.user: root
+      spring.flyway.password: devaten@123
     depends_on: 
       devaten-dashboard-container: 
         condition: service_healthy
