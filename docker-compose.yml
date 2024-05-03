@@ -19,7 +19,7 @@ services:
     volumes:
       - ./Configurations/activemq/ACTIVEMQ_CONF/conf:/opt/activemq/conf:rw
   mysqldb:
-    image: mysql:8
+    image: mysql:8.3.0
     container_name: mysqldb
     restart: always
     environment:
@@ -61,9 +61,9 @@ services:
       openai.responsemodel: Enter-open-ai-responsemodel
       # if your open-ai is on azure server then put server name as 'azure' or if you use opensource then server name as 'openai'.
       openai.server: Enter-open-ai-server
-      smtp.host: blade13.euronic.fi
-      smtp.email: admin@devaten.com
-      smtp.password: 47eyRnNFv69caaG
+      smtp.host: [HOST_URL]
+      smtp.email: [EMAILID]
+      smtp.password: [PASSWORD]
       smtp.port: 465
     depends_on: 
       mysqldb: 
