@@ -65,6 +65,10 @@ services:
       smtp.email: [EMAILID]
       smtp.password: [PASSWORD]
       smtp.port: 465
+      stoprecording.explainjson: disabled
+      stoprecording.jira: disabled
+      stoprecording.report: enable
+      stoprecording.recordingmail: whenFailure
     depends_on: 
       mysqldb: 
         condition: service_healthy
