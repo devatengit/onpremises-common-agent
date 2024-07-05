@@ -61,15 +61,15 @@ services:
       openai.responsemodel: Enter-open-ai-responsemodel
       # if your open-ai is on azure server then put server name as 'azure' or if you use opensource then server name as 'openai'.
       openai.server: Enter-open-ai-server
-      openai.timeintervalinseconds=0
-      scheduler.fixed-delay=15000
+      openai.timeintervalinseconds: 0
+      scheduler.fixed-delay: 15000
       # cpu.collector types: OFF,AGENT,CLIENT_TABLE (devaten.system_health_metrics)
-      scheduler.cpu.collertor-type= AGENT
-      azure.devops.organization= Enter-your-organisation
-      azure.devops.project=Enter-your-project
-      azure.devops.tickettype=task
-      azure.devops.pat=Enter-your-token-for-api-calls
-      devops.company.name=azureDevops
+      scheduler.cpu.collertor-type: AGENT
+      azure.devops.organization: Enter-your-organisation
+      azure.devops.project: Enter-your-project
+      azure.devops.tickettype: task
+      azure.devops.pat: Enter-your-token-for-api-calls
+      devops.company.name: azureDevops
       smtp.host: [HOST_URL]
       smtp.email: [EMAILID]
       smtp.password: [PASSWORD]
