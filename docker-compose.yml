@@ -64,7 +64,7 @@ services:
       openai.timeintervalinseconds: 0
       scheduler.fixed-delay: 15000
       # cpu.collector types: OFF,AGENT,CLIENT_TABLE (devaten.system_health_metrics)
-      scheduler.cpu.collertor-type: AGENT
+      scheduler.cpu.collector-type: AGENT
       azure.devops.organization: Enter-your-organisation
       azure.devops.project: Enter-your-project
       azure.devops.tickettype: task
