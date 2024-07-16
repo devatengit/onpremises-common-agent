@@ -46,9 +46,9 @@ Here is a step-by-step guide to update the fields in your docker-compose.yml fil
 &nbsp;&nbsp;openai.timeintervalinseconds: 0
 
 &nbsp;&nbsp;Field Name: openai.timeintervalinseconds
-&nbsp;&nbsp;Description: This field specifies the interval, in seconds, between consecutive OpenAI API calls. It ensures that the calls to the OpenAI API are made with &nbsp;&nbsp;a defined pause between them, avoiding potential rate limiting or excessive usage.
+&nbsp;&nbsp;Description: This field specifies the interval, in seconds, between consecutive OpenAI API calls. It ensures that the calls to the OpenAI API are made with a defined pause between them, avoiding potential rate limiting or excessive usage.
 &nbsp;&nbsp;Current Value: 0
-&nbsp;&nbsp;Implications: Setting this value to 0 means there is no delay between consecutive OpenAI API calls. This could lead to rapid successive calls, potentially &nbsp;&nbsp;hitting rate limits or causing performance issues.
+&nbsp;&nbsp;Implications: Setting this value to 0 means there is no delay between consecutive OpenAI API calls. This could lead to rapid successive calls, potentially hitting rate limits or causing performance issues.
 
  &ensp;6. Set the scheduler.fixed-delay Field:
 
