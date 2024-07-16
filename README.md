@@ -32,7 +32,7 @@ Here is a step-by-step guide to update the fields in your docker-compose.yml fil
 &nbsp;&nbsp;openai.responsemodel: Enter-open-ai-responsemodel
 
 &nbsp;&nbsp;Replace Enter-open-ai-responsemodel with the model name.
-&nbsp;&nbsp;&ensp;Use ‘gpt-3.5-turbo’ or ‘gpt-4’ for the response model.
+&nbsp;&nbsp;Use ‘gpt-3.5-turbo’ or ‘gpt-4’ for the response model.
 
  &ensp;4. Specify the openai.server Field:
 
@@ -55,9 +55,9 @@ Here is a step-by-step guide to update the fields in your docker-compose.yml fil
  &nbsp;&nbsp;scheduler.fixed-delay: 15000
 
 &nbsp;&nbsp;Field Name: scheduler.fixed-delay
-&nbsp;&nbsp;Description: This field defines the delay, in milliseconds, between updates to the Devaten live metric page. It controls how often session data, graphs, and other metrics are refreshed &nbsp;&nbsp;on the live metric page.
-&nbsp;&nbsp;Current Value: 15000
-&nbsp;&nbsp;Implications: Setting this value to 15000 means the live metric page will update every 15 seconds. This frequent updating ensures that users see near-real-time data and metrics, &nbsp;&nbsp;providing a current view of sessions and graphs.
+ &ensp;;Description: This field defines the delay, in milliseconds, between updates to the Devaten live metric page. It controls how often session data, graphs, and other metrics are refreshed on the live metric page.
+ &ensp;Current Value: 15000
+ &ensp;Implications: Setting this value to 15000 means the live metric page will update every 15 seconds. This frequent updating ensures that users see near-real-time data and metrics, providing a current view of sessions and graphs.
 
  &ensp;7. Configure the scheduler.cpu.collertor-type Field:
 
