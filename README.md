@@ -32,7 +32,7 @@ Here is a step-by-step guide to update the fields in your docker-compose.yml fil
 &nbsp;&nbsp;openai.responsemodel: Enter-open-ai-responsemodel
 
 &nbsp;&nbsp;Replace Enter-open-ai-responsemodel with the model name.
-&nbsp;&nbsp;Use ‘gpt-3.5-turbo’ or ‘gpt-4’ for the response model.
+&nbsp;&nbsp;&ensp;Use ‘gpt-3.5-turbo’ or ‘gpt-4’ for the response model.
 
  &ensp;4. Specify the openai.server Field:
 
