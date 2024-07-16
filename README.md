@@ -20,7 +20,8 @@ Here is a step-by-step guide to update the fields in your docker-compose.yml fil
 &nbsp;&nbsp;openai.apiKey: Enter-your-openai-key
 
 &nbsp;&nbsp;Replace Enter-your-openai-key with your actual OpenAI API key.
-2. Set the openai.apiurl Field:
+
+ &ensp;2. Set the openai.apiurl Field:
 
 &nbsp;&nbsp;openai.apiurl: Enter-open-ai-api-url
 
