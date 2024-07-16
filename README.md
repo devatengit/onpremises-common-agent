@@ -9,7 +9,7 @@ To run the On-Premise MySQL Agent Docker Compose File locally, you must have Git
 ```ruby
 git clone https://github.com/devatengit/onpremises-common-agent.git
 ```
-Configure docker-compose.yml:
+**Configure docker-compose.yml:**
 
 Once the cloning process is complete, you will see the ‘onpremises-common-agent’ folder. Open the ‘docker-compose.yml’ file in that folder using any text editor, such as Notepad or VS Code.
 
@@ -17,66 +17,66 @@ Here is a step-by-step guide to update the fields in your docker-compose.yml fil
 
 1. Locate the openai.apiKey Field:
 
-openai.apiKey: Enter-your-openai-key
+&nbsp;&nbsp;openai.apiKey: Enter-your-openai-key
 
-Replace Enter-your-openai-key with your actual OpenAI API key.
+&nbsp;&nbsp;Replace Enter-your-openai-key with your actual OpenAI API key.
 2. Set the openai.apiurl Field:
 
-openai.apiurl: Enter-open-ai-api-url
+&nbsp;&nbsp;openai.apiurl: Enter-open-ai-api-url
 
-Replace Enter-open-ai-api-url with the appropriate URL
+&nbsp;&nbsp;Replace Enter-open-ai-api-url with the appropriate URL
 3. Define the openai.responsemodel Field:
 
-openai.responsemodel: Enter-open-ai-responsemodel
+&nbsp;&nbsp;openai.responsemodel: Enter-open-ai-responsemodel
 
-Replace Enter-open-ai-responsemodel with the model name.
-Use ‘gpt-3.5-turbo’ or ‘gpt-4’ for the response model.
+&nbsp;&nbsp;Replace Enter-open-ai-responsemodel with the model name.
+&nbsp;&nbsp;Use ‘gpt-3.5-turbo’ or ‘gpt-4’ for the response model.
 4. Specify the openai.server Field:
 
-openai.server: Enter-open-ai-server
-Replace Enter-open-ai-server with the appropriate server name.
-For Azure, use ‘azure’.
-For open-source, use ‘openai’.
+&nbsp;&nbsp;openai.server: Enter-open-ai-server
+&nbsp;&nbsp;Replace Enter-open-ai-server with the appropriate server name.
+&nbsp;&nbsp;For Azure, use ‘azure’.
+&nbsp;&nbsp;For open-source, use ‘openai’.
  5. Adjust the openai.timeintervalinseconds Field:
 
-openai.timeintervalinseconds: 0
+&nbsp;&nbsp;openai.timeintervalinseconds: 0
 
-Field Name: openai.timeintervalinseconds
-Description: This field specifies the interval, in seconds, between consecutive OpenAI API calls. It ensures that the calls to the OpenAI API are made with a defined pause between them, avoiding potential rate limiting or excessive usage.
-Current Value: 0
-Implications: Setting this value to 0 means there is no delay between consecutive OpenAI API calls. This could lead to rapid successive calls, potentially hitting rate limits or causing performance issues.
+&nbsp;&nbsp;Field Name: openai.timeintervalinseconds
+&nbsp;&nbsp;Description: This field specifies the interval, in seconds, between consecutive OpenAI API calls. It ensures that the calls to the OpenAI API are made with &nbsp;&nbsp;a defined pause between them, avoiding potential rate limiting or excessive usage.
+&nbsp;&nbsp;Current Value: 0
+&nbsp;&nbsp;Implications: Setting this value to 0 means there is no delay between consecutive OpenAI API calls. This could lead to rapid successive calls, potentially &nbsp;&nbsp;hitting rate limits or causing performance issues.
 6. Set the scheduler.fixed-delay Field:
 
- scheduler.fixed-delay: 15000
+ &nbsp;&nbsp;scheduler.fixed-delay: 15000
 
-Field Name: scheduler.fixed-delay
-Description: This field defines the delay, in milliseconds, between updates to the Devaten live metric page. It controls how often session data, graphs, and other metrics are refreshed on the live metric page.
-Current Value: 15000
-Implications: Setting this value to 15000 means the live metric page will update every 15 seconds. This frequent updating ensures that users see near-real-time data and metrics, providing a current view of sessions and graphs.
+&nbsp;&nbsp;Field Name: scheduler.fixed-delay
+&nbsp;&nbsp;Description: This field defines the delay, in milliseconds, between updates to the Devaten live metric page. It controls how often session data, graphs, and other metrics are refreshed &nbsp;&nbsp;on the live metric page.
+&nbsp;&nbsp;Current Value: 15000
+&nbsp;&nbsp;Implications: Setting this value to 15000 means the live metric page will update every 15 seconds. This frequent updating ensures that users see near-real-time data and metrics, &nbsp;&nbsp;providing a current view of sessions and graphs.
 7. Configure the scheduler.cpu.collertor-type Field:
 
-Options include OFF, AGENT, or CLIENT_TABLE.
-Replace AGENT with your desired collector type.
+&nbsp;&nbsp;Options include OFF, AGENT, or CLIENT_TABLE.
+&nbsp;&nbsp;Replace AGENT with your desired collector type.
 8. Enter Details for Azure DevOps:
 
-azure.devops.organization: your-organisation
-azure.devops.project: your-project
-azure.devops.tickettype: task
-azure.devops.pat: your-token-for-api-calls
+&nbsp;&nbsp;azure.devops.organization: your-organisation
+&nbsp;&nbsp;azure.devops.project: your-project
+&nbsp;&nbsp;azure.devops.tickettype: task
+&nbsp;&nbsp;azure.devops.pat: your-token-for-api-calls
 
-Replace Enter-your-organisation with your Azure DevOps organization name.
-Replace Enter-your-project with your Azure DevOps project name.
-Replace enter task with your desired ticket type .
-Replace Enter-your-token-for-api-calls with your Azure DevOps personal access token.
+&nbsp;&nbsp;Replace Enter-your-organisation with your Azure DevOps organization name.
+&nbsp;&nbsp;Replace Enter-your-project with your Azure DevOps project name.
+&nbsp;&nbsp;Replace enter task with your desired ticket type .
+&nbsp;&nbsp;Replace Enter-your-token-for-api-calls with your Azure DevOps personal access token.
 9. Set Up SMTP Configuration:
 
-smtp.host: smtp.example.com
-smtp.email: your-email@example.com
-smtp.password: your-password
+&nbsp;&nbsp;smtp.host: smtp.example.com
+&nbsp;&nbsp;smtp.email: your-email@example.com
+&nbsp;&nbsp;smtp.password: your-password
 
-Replace [HOST_URL] with your SMTP host URL.
-Replace [EMAILID] with your SMTP email address.
-Replace [PASSWORD] with your SMTP password.
+&nbsp;&nbsp;Replace [HOST_URL] with your SMTP host URL.
+&nbsp;&nbsp;Replace [EMAILID] with your SMTP email address.
+&nbsp;&nbsp;Replace [PASSWORD] with your SMTP password.
 Once you have updated all the fields with your actual data, your docker-compose.yml file should be ready for use.
 
 ## Note:
