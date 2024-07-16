@@ -9,7 +9,7 @@ To run the On-Premise MySQL Agent Docker Compose File locally, you must have Git
 ```ruby
 git clone https://github.com/devatengit/onpremises-common-agent.git
 ```
-**Configure docker-compose.yml:**
+****Configure docker-compose.yml:****
 
 Once the cloning process is complete, you will see the ‘onpremises-common-agent’ folder. Open the ‘docker-compose.yml’ file in that folder using any text editor, such as Notepad or VS Code.
 
@@ -17,33 +17,33 @@ Here is a step-by-step guide to update the fields in your docker-compose.yml fil
 
 1. Locate the openai.apiKey Field:
 
-&nbsp;&nbsp;openai.apiKey: Enter-your-openai-key
+&nbsp;&nbsp;```openai.apiKey: Enter-your-openai-key```
 
 &nbsp;&nbsp;Replace Enter-your-openai-key with your actual OpenAI API key.
 
  &ensp;2. Set the openai.apiurl Field:
 
-&nbsp;&nbsp;openai.apiurl: Enter-open-ai-api-url
+&nbsp;&nbsp;```openai.apiurl: Enter-open-ai-api-url```
 
 &nbsp;&nbsp;Replace Enter-open-ai-api-url with the appropriate URL
 
  &ensp;3. Define the openai.responsemodel Field:
 
-&nbsp;&nbsp;openai.responsemodel: Enter-open-ai-responsemodel
+&nbsp;&nbsp;```openai.responsemodel: Enter-open-ai-responsemodel```
 
 &nbsp;&nbsp;Replace Enter-open-ai-responsemodel with the model name.
 &nbsp;&nbsp;Use ‘gpt-3.5-turbo’ or ‘gpt-4’ for the response model.
 
  &ensp;4. Specify the openai.server Field:
 
-&nbsp;&nbsp;openai.server: Enter-open-ai-server
+&nbsp;&nbsp;```openai.server: Enter-open-ai-server```
 &nbsp;&nbsp;Replace Enter-open-ai-server with the appropriate server name.
 &nbsp;&nbsp;For Azure, use ‘azure’.
 &nbsp;&nbsp;For open-source, use ‘openai’.
 
  &ensp;5. Adjust the openai.timeintervalinseconds Field:
 
-&nbsp;&nbsp;openai.timeintervalinseconds: 0
+&nbsp;&nbsp;```openai.timeintervalinseconds: 0```
 
 &nbsp;&nbsp;Field Name: openai.timeintervalinseconds
 &nbsp;&nbsp;Description: This field specifies the interval, in seconds, between consecutive OpenAI API calls. It ensures that the calls to the OpenAI API are made with a defined pause between them, avoiding potential rate limiting or excessive usage.
@@ -52,10 +52,10 @@ Here is a step-by-step guide to update the fields in your docker-compose.yml fil
 
  &ensp;6. Set the scheduler.fixed-delay Field:
 
- &nbsp;&nbsp;scheduler.fixed-delay: 15000
+ &nbsp;&nbsp;```scheduler.fixed-delay: 15000```
 
 &nbsp;&nbsp;Field Name: scheduler.fixed-delay
- &ensp;;Description: This field defines the delay, in milliseconds, between updates to the Devaten live metric page. It controls how often session data, graphs, and other metrics are refreshed on the live metric page.
+ &ensp;Description: This field defines the delay, in milliseconds, between updates to the Devaten live metric page. It controls how often session data, graphs, and other metrics are refreshed on the live metric page.
  &ensp;Current Value: 15000
  &ensp;Implications: Setting this value to 15000 means the live metric page will update every 15 seconds. This frequent updating ensures that users see near-real-time data and metrics, providing a current view of sessions and graphs.
 
@@ -66,10 +66,10 @@ Here is a step-by-step guide to update the fields in your docker-compose.yml fil
 
  &ensp;8. Enter Details for Azure DevOps:
 
-&nbsp;&nbsp;azure.devops.organization: your-organisation
-&nbsp;&nbsp;azure.devops.project: your-project
-&nbsp;&nbsp;azure.devops.tickettype: task
-&nbsp;&nbsp;azure.devops.pat: your-token-for-api-calls
+ &ensp;```azure.devops.organization: your-organisation```
+ &ensp;```azure.devops.project: your-project```
+ &ensp;```azure.devops.tickettype: task```
+ &ensp;```azure.devops.pat: your-token-for-api-calls```
 
 &nbsp;&nbsp;Replace Enter-your-organisation with your Azure DevOps organization name.
 &nbsp;&nbsp;Replace Enter-your-project with your Azure DevOps project name.
@@ -78,14 +78,14 @@ Here is a step-by-step guide to update the fields in your docker-compose.yml fil
 
  &ensp;9. Set Up SMTP Configuration:
 
-&nbsp;&nbsp;smtp.host: smtp.example.com
-&nbsp;&nbsp;smtp.email: your-email@example.com
-&nbsp;&nbsp;smtp.password: your-password
+&nbsp;&nbsp;```smtp.host: smtp.example.com```
+&nbsp;&nbsp;```smtp.email: your-email@example.com```
+&nbsp;&nbsp;```smtp.password: your-password```
 
-&nbsp;&nbsp;Replace [HOST_URL] with your SMTP host URL.
-&nbsp;&nbsp;Replace [EMAILID] with your SMTP email address.
-&nbsp;&nbsp;Replace [PASSWORD] with your SMTP password.
-Once you have updated all the fields with your actual data, your docker-compose.yml file should be ready for use.
+ &ensp;Replace [HOST_URL] with your SMTP host URL.
+Replace [EMAILID] with your SMTP email address.
+Replace [PASSWORD] with your SMTP password.
+ &ensp;Once you have updated all the fields with your actual data, your docker-compose.yml file should be ready for use.
 
 ## Note:
 
