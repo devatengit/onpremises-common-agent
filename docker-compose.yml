@@ -63,6 +63,7 @@ services:
       openai.server: Enter-open-ai-server
       openai.timeintervalinseconds: 0
       scheduler.fixed-delay: 15000
+      scheduler.data-cleaner: 700000
       # cpu.collector types: OFF,AGENT,CLIENT_TABLE (devaten.system_health_metrics)
       scheduler.cpu.collertor-type: AGENT
       azure.devops.organization: Enter-your-organisation
