@@ -88,6 +88,7 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
+      - C:/Program Files/PostgreSQL/11/data/log:/app/logs
     healthcheck:
       test: curl --fail http://localhost:8081 || exit 1
       interval: 60s
