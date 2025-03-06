@@ -19,7 +19,7 @@ services:
     volumes:
       - ./Configurations/activemq/ACTIVEMQ_CONF/conf:/opt/activemq/conf:rw
   mysqldb:
-    image: mysql:8.3.0
+    image: devaten/mysql-8.3-custom:latest
     container_name: mysqldb
     restart: always
     environment:
@@ -79,7 +79,7 @@ services:
       stoprecording.jira: disabled
       stoprecording.report: enable
       stoprecording.recordingmail: whenFailure
-      TZ: [YOUR_LOCAL_TIMEZONE] # Replace [YOUR_LOCAL_TIMEZONE] with your actual local timezone (e.g., "UTC", "America/New_York")
+      TZ: EET # Replace [YOUR_LOCAL_TIMEZONE] with your actual local timezone (e.g., "UTC", "America/New_York")
     depends_on: 
       mysqldb: 
         condition: service_healthy
@@ -88,7 +88,7 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
-      - C:/Program Files/PostgreSQL/11/data/log:/app/logs # Replace "11" with the PostgreSQL version installed on your system
+      - /app/logs:/app/logs # Replace log foleder what you like to use
     healthcheck:
       test: curl --fail http://localhost:8081 || exit 1
       interval: 60s
