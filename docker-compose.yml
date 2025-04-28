@@ -127,16 +127,16 @@ services:
     networks:
       - devaten-dashboard-common-agent   
       
- ollama:
-    image: ollama/ollama  # Specify the version of Ollama you need (e.g., 0.6.7)
+  ollama:
+    image: ollama/ollama
     container_name: ollama-deepseek-coder
     restart: unless-stopped
     ports:
-      - "11434:11434"  # Exposing the default Ollama port
+      - "11434:11434"
     environment:
-      - OLLAMA_MODELS=deepseek-coder:6.7b  # Preloading DeepSeek Coder 6.7B
+      - OLLAMA_MODELS=deepseek-coder:6.7b
     volumes:
-      - ollama-data:/root/.ollama  # Persist Ollama data for model downloads, etc.
+      - ollama-data:/root/.ollama
     networks:
       - devaten-dashboard-common-agent
 
@@ -161,11 +161,12 @@ services:
     depends_on:
       - ollama
     volumes:
-      - ollama:/root/.ollama
+      - ollama-data:/root/.ollama
     restart: unless-stopped
     networks:
       - devaten-dashboard-common-agent
+
 volumes:
-  ollama:
+  ollama-data:
   open-webui:
   h2-data: {}
