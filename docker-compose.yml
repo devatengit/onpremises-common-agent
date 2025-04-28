@@ -126,7 +126,46 @@ services:
       - shared-certs:/app/certs  # Mounts same volume in this container
     networks:
       - devaten-dashboard-common-agent   
+      
+ ollama:
+    image: ollama/ollama  # Specify the version of Ollama you need (e.g., 0.6.7)
+    container_name: ollama-deepseek-coder
+    restart: unless-stopped
+    ports:
+      - "11434:11434"  # Exposing the default Ollama port
+    environment:
+      - OLLAMA_MODELS=deepseek-coder:6.7b  # Preloading DeepSeek Coder 6.7B
+    volumes:
+      - ollama-data:/root/.ollama  # Persist Ollama data for model downloads, etc.
+    networks:
+      - devaten-dashboard-common-agent
 
+  webui:
+    image: ghcr.io/open-webui/open-webui:main
+    container_name: webui
+    ports:
+      - "7000:8080"
+    volumes:
+      - open-webui:/app/backend/data
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    depends_on:
+      - ollama
+    restart: unless-stopped
+    networks:
+      - devaten-dashboard-common-agent
+
+  deepseek-coder:
+    image: ollama/ollama
+    container_name: deepseek-coder
+    depends_on:
+      - ollama
+    volumes:
+      - ollama:/root/.ollama
+    restart: unless-stopped
+    networks:
+      - devaten-dashboard-common-agent
 volumes:
+  ollama:
+  open-webui:
   h2-data: {}
-  shared-certs: {}
