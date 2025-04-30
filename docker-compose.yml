@@ -53,7 +53,15 @@ services:
       spring.datasource.password: devaten@123
       spring.flyway.user: root
       spring.flyway.password: devaten@123
-      openai.apiKey: Enter-your-openai-key
+      # --- AI Provider Selection
+      aiProvider: DEEPSEEK  # Options: DEEPSEEK or OPENAI
+      # --- DEEPSEEK (Ollama) Config ---
+      ollama.base-url: http://ollama-deepseek-coder:11434
+      ollama.model: deepseek-coder:6.7b  # or deepseek-coder 
+      OLLAMA_CHAT_PATH: /api/generate  # Use /api/chat for deepseek-coder
+
+      # --- OPENAI Config ---      
+      openai.apiKey: Enter-your-openai-key      
       # for opensource url must be like this 'https://api.openai.com/v1/chat/completions' if your open-ai on azure then
       #your url like 'https://xxxxxxx.openai.azure.com/openai/deployments/Test/completions?api-version=2023-09-15-preview'
       openai.apiurl: Enter-open-ai-api-url
@@ -134,39 +142,17 @@ services:
     ports:
       - "11434:11434"
     environment:
-      - OLLAMA_MODELS=deepseek-coder:6.7b
+      - OLLAMA_MODELS=deepseek-coder:6.7b  # Or deepseek-coder
     volumes:
       - ollama-data:/root/.ollama
     networks:
       - devaten-dashboard-common-agent
-
-  webui:
-    image: ghcr.io/open-webui/open-webui:main
-    container_name: webui
-    ports:
-      - "7000:8080"
-    volumes:
-      - open-webui:/app/backend/data
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
-    depends_on:
-      - ollama
-    restart: unless-stopped
-    networks:
-      - devaten-dashboard-common-agent
-
-  deepseek-coder:
-    image: ollama/ollama
-    container_name: deepseek-coder
-    depends_on:
-      - ollama
-    volumes:
-      - ollama-data:/root/.ollama
-    restart: unless-stopped
-    networks:
-      - devaten-dashboard-common-agent
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:11434"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
 
 volumes:
   ollama-data:
-  open-webui:
   h2-data: {}
