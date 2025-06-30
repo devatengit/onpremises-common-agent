@@ -79,9 +79,9 @@ services:
       azure.devops.tickettype: task
       azure.devops.pat: Enter-your-token-for-api-calls
       devops.company.name: azureDevops
-      smtp.host: [HOST_URL]
-      smtp.email: [EMAILID]
-      smtp.password: [PASSWORD]
+      smtp.host: blade13.euronic.fi
+      smtp.email: admin@devaten.com
+      smtp.password: 47eyRnNFv69caaG
       smtp.port: 465
       stoprecording.explainjson: disabled
       stoprecording.jira: disabled
@@ -118,7 +118,7 @@ services:
       spring.datasource.password: devaten@123
       spring.flyway.user: root
       spring.flyway.password: devaten@123
-      TZ: [YOUR_LOCAL_TIMEZONE] # Replace [YOUR_LOCAL_TIMEZONE] with your actual local timezone (e.g., "UTC", "America/New_York")
+      TZ: "UTC" # Replace [YOUR_LOCAL_TIMEZONE] with your actual local timezone (e.g., "UTC", "America/New_York")
       CERTS_BASE_PATH: /app/certs  # Environment variable for certs path
       KEYSTORE_PASSWORD: Salasana1234!  # Secure Keystore password
     depends_on: 
