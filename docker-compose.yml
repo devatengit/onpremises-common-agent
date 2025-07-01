@@ -90,6 +90,7 @@ services:
       TZ: EET # Replace [YOUR_LOCAL_TIMEZONE] with your actual local timezone (e.g., "UTC", "America/New_York")
       CERTS_BASE_PATH: /app/certs  # Environment variable for certs path
       KEYSTORE_PASSWORD: Salasana1234!  # Secure Keystore password
+      application.notification_channel: DEEPSEEK
     depends_on: 
       mysqldb: 
         condition: service_healthy
