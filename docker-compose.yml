@@ -156,3 +156,4 @@ services:
 volumes:
   ollama-data:
   h2-data: {}
+  shared-certs: {}
