@@ -153,27 +153,8 @@ services:
       interval: 30s
       timeout: 5s
       retries: 3
-
-  ollama-llama3-speed:
-    image: ollama/ollama
-    container_name: ollama-llama3-speed
-    restart: unless-stopped
-    ports:
-      - "11436:11434"
-    environment:
-      - OLLAMA_MODELS=llama3_speed_chat:latest
-    volumes:
-      - ollama-llama3-speed-data:/root/.ollama
-    networks:
-      - devaten-dashboard-common-agent
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:11434"]
-      interval: 30s
-      timeout: 5s
-      retries: 3
       
 volumes:
   ollama-llama3-data:
-  ollama-llama3-speed-data:
   h2-data: {}
   shared-certs: {}
