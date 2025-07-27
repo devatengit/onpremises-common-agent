@@ -136,16 +136,17 @@ services:
     networks:
       - devaten-dashboard-common-agent   
       
-  ollama:
+services:
+  ollama-llama3:
     image: ollama/ollama
-    container_name: ollama-deepseek-coder
+    container_name: ollama-llama3
     restart: unless-stopped
     ports:
       - "11434:11434"
     environment:
-      - OLLAMA_MODELS=deepseek-coder:6.7b  # Or deepseek-coder
+      - OLLAMA_MODELS=llama3
     volumes:
-      - ollama-data:/root/.ollama
+      - ollama-llama3-data:/root/.ollama
     networks:
       - devaten-dashboard-common-agent
     healthcheck:
@@ -154,7 +155,26 @@ services:
       timeout: 5s
       retries: 3
 
+  ollama-llama3-speed:
+    image: ollama/ollama
+    container_name: ollama-llama3-speed
+    restart: unless-stopped
+    ports:
+      - "11436:11434"
+    environment:
+      - OLLAMA_MODELS=llama3_speed_chat:latest
+    volumes:
+      - ollama-llama3-speed-data:/root/.ollama
+    networks:
+      - devaten-dashboard-common-agent
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:11434"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      
 volumes:
-  ollama-data:
+  ollama-llama3-data:
+  ollama-llama3-speed-data:
   h2-data: {}
   shared-certs: {}
