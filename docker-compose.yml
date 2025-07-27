@@ -153,8 +153,22 @@ services:
       interval: 30s
       timeout: 5s
       retries: 3
+  
+  whisper-service:
+    build:
+      context: ./whisper
+      dockerfile: Dockerfile
+    container_name: whisper-service
+    restart: unless-stopped
+    volumes:
+      - ./whisper/app/uploads:/app/uploads
+    ports:
+      - "8000:8000"
+    networks:
+      - devaten-dashboard-common-agent
       
 volumes:
   ollama-llama3-data:
   h2-data: {}
   shared-certs: {}
+  whisper-uploads:
