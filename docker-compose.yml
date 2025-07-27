@@ -169,6 +169,6 @@ services:
       
 volumes:
   ollama-llama3-data:
-  h2-data: {}
-  shared-certs: {}
+  h2-data:
+  shared-certs:
   whisper-uploads:
