@@ -136,7 +136,6 @@ services:
     networks:
       - devaten-dashboard-common-agent   
       
-services:
   ollama-llama3:
     image: ollama/ollama
     container_name: ollama-llama3
