@@ -156,7 +156,7 @@ services:
   
   whisper-service:
     build:
-      context: ./whisper
+      context: ./Configurations/whisper
       dockerfile: Dockerfile
     container_name: whisper-service
     restart: unless-stopped
