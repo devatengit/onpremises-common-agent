@@ -16,7 +16,7 @@ async def transcribe_audio(file: UploadFile = File(...)):
         input_path = tmp.name
 
     chunk_dir = tempfile.mkdtemp()
-    chunk_pattern = os.path.join(chunk_dir, "chunk_%03d" + ext)
+    chunk_pattern = os.path.join(chunk_dir, "chunk_%03d.wav") 
 
     try:
         # Split into 30-second chunks using ffmpeg
@@ -26,6 +26,7 @@ async def transcribe_audio(file: UploadFile = File(...)):
             "-segment_time", "30",
             "-c:a", "pcm_s16le",
             "-ar", "16000",   
+            "-ac", "1",
             chunk_pattern
         ]
         subprocess.run(split_command, check=True)
