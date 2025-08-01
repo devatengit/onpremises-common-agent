@@ -1,12 +1,16 @@
 from fastapi import FastAPI, UploadFile, File, HTTPException
+from fastapi.responses import JSONResponse
 import subprocess
 import os
 import tempfile
 import whisper
 import asyncio
+import logging
 
 app = FastAPI()
 model = whisper.load_model("base")  # You can change to "medium", "large", etc.
+
+logging.basicConfig(level=logging.INFO)
 
 @app.post("/transcribe/")
 async def transcribe_audio(file: UploadFile = File(...)):
@@ -19,7 +23,6 @@ async def transcribe_audio(file: UploadFile = File(...)):
     chunk_pattern = os.path.join(chunk_dir, "chunk_%03d.wav")
 
     try:
-        # Split and convert to WAV format suitable for Whisper
         split_command = [
             "ffmpeg", "-i", input_path,
             "-f", "segment",
@@ -29,21 +32,25 @@ async def transcribe_audio(file: UploadFile = File(...)):
             "-ac", "1",
             chunk_pattern
         ]
-        subprocess.run(split_command, check=True)
+        result = subprocess.run(split_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+        if result.returncode != 0:
+            logging.error(f"FFmpeg failed with error:\n{result.stderr}")
+            raise HTTPException(status_code=500, detail="Error processing audio file with ffmpeg")
 
         full_transcription = ""
 
-        # Transcribe each chunk
         chunk_files = sorted(os.listdir(chunk_dir))
         for chunk_file in chunk_files:
             chunk_path = os.path.join(chunk_dir, chunk_file)
-            result = await asyncio.to_thread(model.transcribe, chunk_path)
-            full_transcription += result["text"] + " "
+            transcription_result = await asyncio.to_thread(model.transcribe, chunk_path)
+            full_transcription += transcription_result["text"] + " "
 
-        return {"transcription": full_transcription.strip()}
+        return JSONResponse(content={"transcription": full_transcription.strip()})
 
     except Exception as e:
+        logging.exception("Error during transcription")
         raise HTTPException(status_code=500, detail=str(e))
+
     finally:
         # Clean up temporary files
         if os.path.exists(input_path):
