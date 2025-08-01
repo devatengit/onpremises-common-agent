@@ -1,4 +1,4 @@
-from fastapi import FastAPI, UploadFile, File, HTTPException, Response
+from fastapi import FastAPI, UploadFile, File, HTTPException
 import subprocess
 import os
 import tempfile
@@ -8,7 +8,7 @@ import asyncio
 app = FastAPI()
 model = whisper.load_model("base")  # You can change to "medium", "large", etc.
 
-@app.post("/transcribe/", response_class=Response)
+@app.post("/transcribe/")
 async def transcribe_audio(file: UploadFile = File(...)):
     ext = os.path.splitext(file.filename)[1] or ".webm"
     with tempfile.NamedTemporaryFile(delete=False, suffix=ext) as tmp:
