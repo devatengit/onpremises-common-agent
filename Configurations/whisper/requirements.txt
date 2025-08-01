@@ -3,3 +3,4 @@ uvicorn
 openai-whisper
 pydub
 python-multipart
+ffmpeg-python
