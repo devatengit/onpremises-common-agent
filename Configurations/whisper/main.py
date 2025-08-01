@@ -24,7 +24,7 @@ async def transcribe_audio(file: UploadFile = File(...)):
             "ffmpeg", "-i", input_path,
             "-f", "segment",
             "-segment_time", "30",
-            "-c:a", "pcm_s16le
+            "-c:a", "pcm_s16le",
             "-ar", "16000",   
             chunk_pattern
         ]
