@@ -40,7 +40,7 @@ async def transcribe_audio(file: UploadFile = File(...)):
             result = await asyncio.to_thread(model.transcribe, chunk_path)
             full_transcription += result["text"] + " "
 
-        return Response(content=full_transcription.strip(), media_type="text/plain")
+        return {"transcription": full_transcription.strip()}
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
