@@ -56,8 +56,6 @@ services:
       # --- AI Provider Selection
       aiProvider: OLLAMA  # Options: OLLAMA or OPENAI
       # --- DEEPSEEK (Ollama) Config ---
-      ollama.base-url: "http://devaten-dashboard-container:11434"
-      whisper.api.url: "http://devaten-dashboard-container:8000"
       ollama.model: llama3:8b #  
       OLLAMA_CHAT_PATH: /api/generate  # Use /api/chat for llama3:8b
       ollama.request.prompt: "The following is a patient\u2019s spoken description. First, determine which language is being spoken. Then, classify the condition into a likely medical category (e.g., infection, gastrointestinal, emergency, etc.). Provide a summary of potential diagnoses using ICD-11 medical codes. Finally, offer clear recommendations for what the patient should do next, including whether urgent medical attention is required."
