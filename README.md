@@ -113,3 +113,6 @@ sudo docker logs -f <Container_Name>
 ```
 
 **Remove containers:**
+```bash
+sudo docker-compose down
+```
