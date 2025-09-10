@@ -116,3 +116,26 @@ sudo docker logs -f <Container_Name>
 ```bash
 sudo docker-compose down
 ```
+## 📡 API Usage
+
+After the Docker Compose setup is up and running, and Ollama has been pulled,  
+you can start using the APIs.
+
+You can send audio files and receive transcriptions and classifications via AI.
+
+**Transcription API Example:**
+```
+POST http://host:8081/devaten/audio/transcribe/?file
+```
+- Send an audio file as `multipart/form-data` with the key `file`.
+- The response will contain the transcription.
+
+**Classification:**
+- The current prompts are defined in the `docker-compose.yml` file.
+- There is a demo set up for "Patients" classification, which you can customize to fit your own use case.
+
+**Prompt configuration keys:**
+- `ollama.request.prompt`
+- `ollama.classification.prompt`
+
+Edit these in your `docker-compose.yml` to change the AI's behavior for your scenario.
